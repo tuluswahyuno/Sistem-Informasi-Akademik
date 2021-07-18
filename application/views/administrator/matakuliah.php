@@ -29,9 +29,10 @@
     			<td><?php echo $mk->nama_matakuliah ?>  </td>
                 <td><?php echo $mk->nama_prodi ?>  </td>
 
-    			<td width="20px"> <?php echo anchor('administrator/matakuliah/update/'.$mk->kode_matakuliah,'<div class="btn btn-sm btn-info"><i class="fas fa-edit"></i></div>') ?></td>
 
                 <td width="20px"> <?php echo anchor('administrator/matakuliah/detail/'.$mk->kode_matakuliah,'<div class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></div>') ?></td>
+
+    			<td width="20px"> <?php echo anchor('administrator/matakuliah/update/'.$mk->kode_matakuliah,'<div class="btn btn-sm btn-info"><i class="fas fa-edit"></i></div>') ?></td>
 
     			<td width="20px" data-toggle="modal" data-target="#confirm-delete"> <div class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></div> </td>    			
     		</tr>
