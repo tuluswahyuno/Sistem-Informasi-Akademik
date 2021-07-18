@@ -15,6 +15,19 @@
     <script src="<?php echo base_url() ?>assets/js/demo/chart-area-demo.js"></script>
     <script src="<?php echo base_url() ?>assets/js/demo/chart-pie-demo.js"></script>
 
+
+
+    <script src="<?php echo base_url('assets/bootstrap-datepicker/js/bootstrap-datepicker.js'); ?>"></script>
+    <script>
+    $(document).ready(function() {
+        $('.datepicker').datepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true,
+            todayHighlight: true,
+        });
+    });
+    </script>
+
 </body>
 
 </html>
