@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 16, 2021 at 09:09 AM
+-- Generation Time: Jul 19, 2021 at 08:04 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.3.26
 
@@ -45,6 +45,36 @@ INSERT INTO `jurusan` (`id_jurusan`, `kode_jurusan`, `nama_jurusan`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `mahasiswa`
+--
+
+CREATE TABLE `mahasiswa` (
+  `id` int(11) NOT NULL,
+  `nim` varchar(11) NOT NULL,
+  `nama_lengkap` varchar(120) NOT NULL,
+  `alamat` varchar(255) NOT NULL,
+  `email` varchar(120) NOT NULL,
+  `telepon` varchar(20) NOT NULL,
+  `tempat_lahir` varchar(120) NOT NULL,
+  `tanggal_lahir` date NOT NULL,
+  `jenis_kelamin` varchar(120) NOT NULL,
+  `nama_prodi` varchar(120) NOT NULL,
+  `photo` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `mahasiswa`
+--
+
+INSERT INTO `mahasiswa` (`id`, `nim`, `nama_lengkap`, `alamat`, `email`, `telepon`, `tempat_lahir`, `tanggal_lahir`, `jenis_kelamin`, `nama_prodi`, `photo`) VALUES
+(1, '3114140', 'tulus wahyu yes', 'bandung', 'wah@gmail.com', '089673393833', '3114140', '2021-07-01', 'laki-laki', 'Sistem Informasi', '1.png'),
+(2, '3114141', 'wahyuno', 'margo asri rt 36 rw 08, puro, karangmalang', 'tulus@gmail.com', '089673393833', '3114141', '2021-07-12', 'laki-laki', 'Sistem Informasi', 'Untitled-12.png'),
+(3, '3114141', 'asdf', 'asdf', 'tulus@gmail.com', '089673393833', '3114141', '1980-11-14', 'laki-laki', 'Sistem Informasi', 'Untitled-121.png'),
+(5, '3114141', 'wahyuno', 'margo asri rt 36 rw 08', 'asdf', '089673393833', '3114141', '2021-07-18', 'laki-laki', 'Sistem Informasi', 'Screenshot_10.png');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `matakuliah`
 --
 
@@ -61,7 +91,7 @@ CREATE TABLE `matakuliah` (
 --
 
 INSERT INTO `matakuliah` (`kode_matakuliah`, `nama_matakuliah`, `sks`, `semester`, `nama_prodi`) VALUES
-('MKK01', 'Algoritma dan Pemrograman Dasar', 3, 1, 'Sistem Informasi'),
+('MKK01', 'Algoritma dan Pemrograman Dasar', 3, 1, 'Teknik Informatika'),
 ('MKK02', 'Sistem Basis Data', 3, 2, 'Sistem Informasi');
 
 -- --------------------------------------------------------
@@ -85,6 +115,27 @@ INSERT INTO `prodi` (`id_prodi`, `kode_prodi`, `nama_prodi`, `nama_jurusan`) VAL
 (1, 'SI', 'Sistem Informasi', 'Ilmu Komputer'),
 (2, 'TI', 'Teknik Informatika', 'Ilmu Komputer'),
 (3, 'MI', 'Manajemen Informasi', 'Ilmu Komputer');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tahun_akademik`
+--
+
+CREATE TABLE `tahun_akademik` (
+  `id` int(11) NOT NULL,
+  `tahun_akademik` varchar(20) NOT NULL,
+  `semester` varchar(20) NOT NULL,
+  `status` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tahun_akademik`
+--
+
+INSERT INTO `tahun_akademik` (`id`, `tahun_akademik`, `semester`, `status`) VALUES
+(1, '2018/2019', 'Ganjil', 'Aktif'),
+(2, '2019/2020', 'Ganjil', 'Aktif');
 
 -- --------------------------------------------------------
 
@@ -136,10 +187,22 @@ ALTER TABLE `jurusan`
   ADD PRIMARY KEY (`id_jurusan`);
 
 --
+-- Indexes for table `mahasiswa`
+--
+ALTER TABLE `mahasiswa`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `prodi`
 --
 ALTER TABLE `prodi`
   ADD PRIMARY KEY (`id_prodi`);
+
+--
+-- Indexes for table `tahun_akademik`
+--
+ALTER TABLE `tahun_akademik`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tentang_kampus`
@@ -164,10 +227,22 @@ ALTER TABLE `jurusan`
   MODIFY `id_jurusan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
+-- AUTO_INCREMENT for table `mahasiswa`
+--
+ALTER TABLE `mahasiswa`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `prodi`
 --
 ALTER TABLE `prodi`
   MODIFY `id_prodi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `tahun_akademik`
+--
+ALTER TABLE `tahun_akademik`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tentang_kampus`
