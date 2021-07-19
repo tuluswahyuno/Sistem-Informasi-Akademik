@@ -14,7 +14,6 @@ class Mahasiswa extends CI_Controller
 			$this->load->view('templates_administrator/sidebar');
 			$this->load->view('administrator/mahasiswa',$data);
 			$this->load->view('templates_administrator/footer');
-
 	}
 
 
