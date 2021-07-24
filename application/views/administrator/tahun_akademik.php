@@ -25,7 +25,7 @@
 			<td><?php echo $ak->semester ?></td>
 			<td><?php echo $ak->status ?></td>
 
-			<td width="20px"><?php echo anchor('administrator/tahun_akademik/update/'.$ak->id,'<div class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></div>') ?></td>
+			<td width="20px"><?php echo anchor('administrator/tahun_akademik/update/'.$ak->id_thn_ak,'<div class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></div>') ?></td>
 
 			<!-- td width="20px"><?php echo anchor('administrator/tahun_akademik/delete/'.$ak->id,'<div class="btn btn-sm btn-primary"><i class="fas fa-trash"></i></div>') ?></td> -->
 
@@ -50,7 +50,7 @@
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal">Cancel</button>
-                <a><?php echo anchor('administrator/tahun_akademik/delete/'.$ak->id,'<div class="btn btn-sm btn-danger">Hapus Data</div>')?></a>
+                <a><?php echo anchor('administrator/tahun_akademik/delete/'.$ak->id_thn_ak,'<div class="btn btn-sm btn-danger">Hapus Data</div>')?></a>
             </div>
         </div>
 	    </div>

@@ -10,7 +10,7 @@
 
 		<div class="form-group">
 			<label>Tahun Akademik</label>
-			<input type="hidden" name="id" value="<?php echo $ak->id ?>">
+			<input type="hidden" name="id_thn_ak" value="<?php echo $ak->id_thn_ak ?>">
 			<input type="text" name="tahun_akademik" class="form-control" value="<?php echo $ak->tahun_akademik ?>">
 		</div>
 

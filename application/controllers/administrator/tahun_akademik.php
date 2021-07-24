@@ -67,7 +67,7 @@
 
 		public function update($id)
 		{
-			$where = array ('id' => $id);
+			$where = array ('id_thn_ak' => $id);
 
 			$data['tahun_akademik'] = $this->tahunakademik_model->edit_data($where,'tahun_akademik')->result();
 
@@ -80,7 +80,7 @@
 
 		public function update_aksi()
 		{
-			$id 			= $this->input->post('id');
+			$id 			= $this->input->post('id_thn_ak');
 			$tahun_akademik = $this->input->post('tahun_akademik');
 			$semester 		= $this->input->post('semester');
 			$status 		= $this->input->post('status');
@@ -93,7 +93,7 @@
 			);
 
 			$where = array(
-				'id' => $id
+				'id_thn_ak' => $id
 			);
 
 
@@ -112,7 +112,7 @@
 
 		public function delete($id)
 		{
-			$where = array('id' => $id);
+			$where = array('id_thn_ak' => $id);
 
 			$this->tahunakademik_model->delete_data($where,'tahun_akademik');
 
