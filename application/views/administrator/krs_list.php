@@ -91,7 +91,7 @@
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal">Cancel</button>
-                <a><?php echo anchor('administrator/prodi/delete/'.$krs->id_krs,'<div class="btn btn-sm btn-danger">Hapus Data</div>')?></a>
+                <a><?php echo anchor('administrator/krs/delete/'.$krs->id_krs,'<div class="btn btn-sm btn-danger">Hapus Data</div>')?></a>
             </div>
         </div>
 	    </div>

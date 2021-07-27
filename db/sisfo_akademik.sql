@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 19, 2021 at 08:04 AM
+-- Generation Time: Jul 27, 2021 at 01:19 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.3.26
 
@@ -41,6 +41,28 @@ INSERT INTO `jurusan` (`id_jurusan`, `kode_jurusan`, `nama_jurusan`) VALUES
 (13, 'IK', 'Ilmu Komputer'),
 (14, 'MI', 'Manajemen Bisnis'),
 (15, 'KB', 'Komunikasi dan Bahasa');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `krs`
+--
+
+CREATE TABLE `krs` (
+  `id_krs` int(11) NOT NULL,
+  `id_thn_ak` varchar(10) NOT NULL,
+  `nim` varchar(10) NOT NULL,
+  `kode_matakuliah` varchar(10) NOT NULL,
+  `nilai` varchar(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `krs`
+--
+
+INSERT INTO `krs` (`id_krs`, `id_thn_ak`, `nim`, `kode_matakuliah`, `nilai`) VALUES
+(1, '1', '3114140', 'MKK01', ''),
+(3, '1', '3114140', 'MKK02', '');
 
 -- --------------------------------------------------------
 
@@ -92,7 +114,8 @@ CREATE TABLE `matakuliah` (
 
 INSERT INTO `matakuliah` (`kode_matakuliah`, `nama_matakuliah`, `sks`, `semester`, `nama_prodi`) VALUES
 ('MKK01', 'Algoritma dan Pemrograman Dasar', 3, 1, 'Teknik Informatika'),
-('MKK02', 'Sistem Basis Data', 3, 2, 'Sistem Informasi');
+('MKK02', 'Sistem Basis Data', 3, 2, 'Sistem Informasi'),
+('MKK03', 'Desain Grafis', 1, 1, 'Teknik Informatika');
 
 -- --------------------------------------------------------
 
@@ -113,8 +136,7 @@ CREATE TABLE `prodi` (
 
 INSERT INTO `prodi` (`id_prodi`, `kode_prodi`, `nama_prodi`, `nama_jurusan`) VALUES
 (1, 'SI', 'Sistem Informasi', 'Ilmu Komputer'),
-(2, 'TI', 'Teknik Informatika', 'Ilmu Komputer'),
-(3, 'MI', 'Manajemen Informasi', 'Ilmu Komputer');
+(2, 'TI', 'Teknik Informatika', 'Ilmu Komputer');
 
 -- --------------------------------------------------------
 
@@ -123,7 +145,7 @@ INSERT INTO `prodi` (`id_prodi`, `kode_prodi`, `nama_prodi`, `nama_jurusan`) VAL
 --
 
 CREATE TABLE `tahun_akademik` (
-  `id` int(11) NOT NULL,
+  `id_thn_ak` int(11) NOT NULL,
   `tahun_akademik` varchar(20) NOT NULL,
   `semester` varchar(20) NOT NULL,
   `status` varchar(20) NOT NULL
@@ -133,9 +155,9 @@ CREATE TABLE `tahun_akademik` (
 -- Dumping data for table `tahun_akademik`
 --
 
-INSERT INTO `tahun_akademik` (`id`, `tahun_akademik`, `semester`, `status`) VALUES
-(1, '2018/2019', 'Ganjil', 'Aktif'),
-(2, '2019/2020', 'Ganjil', 'Aktif');
+INSERT INTO `tahun_akademik` (`id_thn_ak`, `tahun_akademik`, `semester`, `status`) VALUES
+(1, '2018/2019', 'Genap', 'Tidak Aktif'),
+(7, '2020/2021', 'Ganjil', 'Aktif');
 
 -- --------------------------------------------------------
 
@@ -187,6 +209,12 @@ ALTER TABLE `jurusan`
   ADD PRIMARY KEY (`id_jurusan`);
 
 --
+-- Indexes for table `krs`
+--
+ALTER TABLE `krs`
+  ADD PRIMARY KEY (`id_krs`);
+
+--
 -- Indexes for table `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
@@ -202,7 +230,7 @@ ALTER TABLE `prodi`
 -- Indexes for table `tahun_akademik`
 --
 ALTER TABLE `tahun_akademik`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id_thn_ak`);
 
 --
 -- Indexes for table `tentang_kampus`
@@ -227,6 +255,12 @@ ALTER TABLE `jurusan`
   MODIFY `id_jurusan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
+-- AUTO_INCREMENT for table `krs`
+--
+ALTER TABLE `krs`
+  MODIFY `id_krs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
@@ -242,7 +276,7 @@ ALTER TABLE `prodi`
 -- AUTO_INCREMENT for table `tahun_akademik`
 --
 ALTER TABLE `tahun_akademik`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_thn_ak` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tentang_kampus`

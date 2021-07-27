@@ -135,7 +135,7 @@ class Krs extends CI_Controller
 				</button>
 				</div>');
 
-			redirect('administrator/krs/krs_aksi');
+			redirect('administrator/krs/index');
 		}
 	}
 
@@ -146,6 +146,79 @@ class Krs extends CI_Controller
 		$this->form_validation->set_rules('nim','nim','required');
 		$this->form_validation->set_rules('kode_matakuliah','kode_matakuliah','required');
 	}
+
+
+	public function update($id)
+	{
+		$row = $this->krs_model->get_by_id($id);
+		$th = $row->id_thn_ak;
+
+		if($row){
+			$data = array(
+				'id_krs' => set_value('id_krs',$row->id_krs),
+				'id_thn_ak' => set_value('id_thn_ak',$row->id_thn_ak),
+				'nim' => set_value('nim',$row->nim),
+				'kode_matakuliah' => set_value('kode_matakuliah',$row->kode_matakuliah),
+				'thn_akad_semester' => $this->tahunakademik_model->get_by_id($th)->tahun_akademik,
+				'semester' => $this->tahunakademik_model->get_by_id($th)->semester=='Ganjil'?'Ganjil':'Genap',
+			);
+
+
+			$this->load->view('templates_administrator/header');
+			$this->load->view('templates_administrator/sidebar');
+			$this->load->view('administrator/krs_update',$data);
+			$this->load->view('templates_administrator/footer');
+		}else{
+			echo "Data tidak ditemukan!";
+		}
+	}
+
+
+
+	public function update_aksi()
+	{
+		$id_krs = $this->input->post('id_krs', TRUE);
+		$nim = $this->input->post('nim', TRUE);
+		$id_thn_ak = $this->input->post('id_thn_ak', TRUE);
+		$kode_matakuliah = $this->input->post('kode_matakuliah', TRUE);
+
+		$data = array (
+
+				'id_krs' 			=> $id_krs,
+				'id_thn_ak' 		=> $id_thn_ak,
+				'nim' 				=> $nim,
+				'kode_matakuliah' 	=> $this->input->post('kode_matakuliah', TRUE)
+		);
+
+		$this->krs_model->update($id_krs, $data);
+
+		$this->session->set_flashdata('pesan','<div class="alert alert-success alert-dismissible fade show" role="alert">
+				Data KRS Berhasil Diupdate!
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+				</div>');
+
+			redirect('administrator/krs/index');
+	}
+
+
+	public function delete($id)
+		{
+			$where = array('id_krs' => $id);
+
+			$this->krs_model->hapus_data($where,'krs');
+
+			$this->session->set_flashdata('pesan','<div class="alert alert-danger alert-dismissible fade show" role="alert">
+								Data KRS Berhasil Dihapus !
+							  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							    <span aria-hidden="true">&times;</span>
+							  </button>
+							</div>');
+
+			redirect('administrator/krs/index');
+		}
+
 
 }
 
