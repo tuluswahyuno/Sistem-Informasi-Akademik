@@ -32,9 +32,9 @@
     	</table>
     </center>
 
-    <?php echo anchor('administrator/krs/tambah','<button class="btn btn-sm btn-primary mb-3"><i class="fas fa-plus fa-sm"></i> Tambah Data KRS</button>') ?>
+    <?php echo anchor('administrator/krs/tambah_krs/'.$nim.'/'.$id_thn_ak,'<button class="btn btn-sm btn-primary mb-3"><i class="fas fa-plus fa-sm"></i> Tambah Data KRS</button>') ?>
 
-    <?php echo anchor('administrator/krs/tambah','<button class="btn btn-sm btn-info mb-3"><i class="fas fa-print fa-sm"></i> Print</button>') ?>
+    <?php echo anchor('administrator/krs/cetak','<button class="btn btn-sm btn-info mb-3"><i class="fas fa-print fa-sm"></i> Print</button>') ?>
 
     <table class="table table-bordered table-hover table-striped">
     	<tr>
@@ -42,11 +42,12 @@
     		<th>KODE MATA KULIAH</th>
     		<th>NAMA MATA KULIAH</th>
     		<th>SKS</th>
-    		<th colspan="2">AKSI</th>
+    		<th colspan="2" style="text-align: center;">AKSI</th>
     	</tr>
 
     	<?php 
     		$no=1;
+    		$jumlahSks=0;
     		foreach ($krs_data as $krs) :
     	 ?>
 
@@ -54,7 +55,7 @@
     	 	<td width="20px"><?php echo $no++ ?></td>
     	 	<td><?php echo $krs->kode_matakuliah ?></td>
     	 	<td><?php echo $krs->nama_matakuliah ?></td>
-    	 	<td><?php echo $krs->sks ?></td>
+    	 	<!-- <td><?php echo $krs->sks ?></td> -->
     	 	<td>
     	 		<?php 
     	 			echo $krs->sks;
@@ -67,12 +68,12 @@
     			<td width="20px" data-toggle="modal" data-target="#confirm-delete"> <div class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></div> </td>  
     	 </tr>
 
-    	 <tr>
-    	 	<td colspan="3" align="right"><strong>Jumlah SKS</strong></td>
-    	 	<td><strong><?php echo $jumlahSks ?></strong></td>
-    	 </tr>
-
     	<?php endforeach; ?>
+
+        <tr>
+            <td colspan="3" align="right"><strong>Jumlah SKS</strong></td>
+            <td colspan="3"><strong><?php echo $jumlahSks ?></strong></td>
+         </tr>
 
     </table>
 
